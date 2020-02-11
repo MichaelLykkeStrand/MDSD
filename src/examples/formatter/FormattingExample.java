@@ -5,6 +5,7 @@ import java.util.GregorianCalendar;
 
 public class FormattingExample {
 
+	// Not a good example of a DSL, it is too simple, just a sequential list (all nouns, no verbs)
 	public static void main(String argv[]) {
 		System.out.println("Expected output:\nCourse MDSD had start date: 2/6-2019\nCourse OPN had start date: 1/9-2017\nActual output:");
 		DataFormatter f1 = DataFormatter.build().t("Course ").object(0).
