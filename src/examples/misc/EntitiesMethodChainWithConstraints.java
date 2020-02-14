@@ -28,13 +28,14 @@ either expressed or implied, of the University of Southern Denmark.
 */
 package examples.misc;
 
-public class EntitiesMethodChain {
+public class EntitiesMethodChainWithConstraints {
 	
 	public void build() {
 		system().
 			entity("Person").
 				field(String.class,"name").
 				field(Integer.class, "age").
+				attribute("Person","friends","*").inverse("maybe_friend","*").
 			entity("Student", "Person").
 				field(String.class, "id").
 			entity("Teacher", "Person").
@@ -44,9 +45,15 @@ public class EntitiesMethodChain {
 	// Builder definitions, placed in this class to show declarations, place elsewhere in real system
 	
 	private interface Builder {
-		Builder entity(String name);
-		Builder entity(String name, String base);
-		Builder field(Class<? extends Object> type, String name);
+		EntityBuilder entity(String name);
+		EntityBuilder entity(String name, String base);
+	}
+	private interface EntityBuilder extends Builder {
+		EntityBuilder field(Class<? extends Object> type, String name);
+		RelationBuilder attribute(String type, String name, String multiplicity);
+	}
+	private interface RelationBuilder extends Builder {
+		EntityBuilder inverse(String name, String multiplicity);
 	}
 	static Builder system() { return null; }
 }
