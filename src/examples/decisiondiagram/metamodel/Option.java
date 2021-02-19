@@ -1,4 +1,4 @@
-package examples.recap2021.metamodel;
+package examples.decisiondiagram.metamodel;
 
 public class Option {
 	public Option(String text2) {

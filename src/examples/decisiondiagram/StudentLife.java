@@ -1,8 +1,8 @@
-package examples.recap2021;
+package examples.decisiondiagram;
 
-import examples.recap2021.dsl.DecisionDiagramDSL;
-import examples.recap2021.dsl.DecisionDiagramExecutor;
-import examples.recap2021.metamodel.DecisionDiagramMetamodel;
+import examples.decisiondiagram.dsl.DecisionDiagramDSL;
+import examples.decisiondiagram.dsl.DecisionDiagramExecutor;
+import examples.decisiondiagram.metamodel.DecisionDiagramMetamodel;
 
 public class StudentLife extends DecisionDiagramDSL {
 	public DecisionDiagramMetamodel build() {

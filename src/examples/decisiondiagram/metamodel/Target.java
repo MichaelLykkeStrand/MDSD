@@ -1,4 +1,4 @@
-package examples.recap2021.metamodel;
+package examples.decisiondiagram.metamodel;
 
 public class Target {
 	public Target(String name2, String text2) {

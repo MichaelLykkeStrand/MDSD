@@ -1,13 +1,13 @@
-package examples.recap2021.dsl;
+package examples.decisiondiagram.dsl;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import examples.recap2021.metamodel.DecisionDiagramMetamodel;
-import examples.recap2021.metamodel.Goal;
-import examples.recap2021.metamodel.Option;
-import examples.recap2021.metamodel.Question;
-import examples.recap2021.metamodel.Target;
+import examples.decisiondiagram.metamodel.DecisionDiagramMetamodel;
+import examples.decisiondiagram.metamodel.Goal;
+import examples.decisiondiagram.metamodel.Option;
+import examples.decisiondiagram.metamodel.Question;
+import examples.decisiondiagram.metamodel.Target;
 
 public class DecisionDiagramDSL {
 	protected Builder decisiondiagram(String name) {

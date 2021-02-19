@@ -1,4 +1,4 @@
-package examples.recap2021.metamodel;
+package examples.decisiondiagram.metamodel;
 
 import java.util.ArrayList;
 import java.util.List;
