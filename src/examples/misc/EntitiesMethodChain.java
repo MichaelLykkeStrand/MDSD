@@ -35,9 +35,9 @@ public class EntitiesMethodChain {
 			entity("Person").
 				field(String.class,"name").
 				field(Integer.class, "age").
-			entity("Student", "Person").
+			entity("Student").sub("Person").
 				field(String.class, "id").
-			entity("Teacher", "Person").
+			entity("Teacher").sub("Person").
 				field(String.class, "title");
 	}
 	
@@ -45,7 +45,7 @@ public class EntitiesMethodChain {
 	
 	private interface Builder {
 		Builder entity(String name);
-		Builder entity(String name, String base);
+		Builder sub(String name);
 		Builder field(Class<? extends Object> type, String name);
 	}
 	static Builder system() { return null; }
