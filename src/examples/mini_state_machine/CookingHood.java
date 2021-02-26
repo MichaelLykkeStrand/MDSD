@@ -11,6 +11,7 @@ public class CookingHood extends StateMachine {
 	}
 
 	private void example() {
+		// Build (i.e., create metamodel instance)
 		Machine mo = this.machine().
 				state("OFF").initial().
 					when("+").to("ON",() -> {System.out.println("turn on");}).
@@ -20,6 +21,7 @@ public class CookingHood extends StateMachine {
 				state("MAX").
 					when("-").to("ON",() -> {System.out.println("normal again");}).
 				build();
+		// Runtime (i.e., execute the metamodel instance)
 		MachineInterpreter mi = new MachineInterpreter(mo);
 		mi.processEvent("+");
 		mi.processEvent("+");

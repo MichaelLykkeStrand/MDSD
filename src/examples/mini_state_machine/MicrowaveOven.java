@@ -11,6 +11,7 @@ public class MicrowaveOven extends StateMachine {
 	}
 
 	private void example() {
+		// Build (i.e., create metamodel instance)
 		Machine mo = this.machine().
 				state("OFF").initial().
 					when("power").to("ON",() -> {System.out.println("turned on");}).
@@ -22,6 +23,7 @@ public class MicrowaveOven extends StateMachine {
 					when("close").to("ON",() -> {System.out.println("door closed");}).
 					when("stop").to("OFF",() -> {System.out.println("turned off (remember to close the door)");}).
 				build();
+		// Runtime (i.e., execute the metamodel instance)
 		MachineInterpreter mi = new MachineInterpreter(mo);
 		mi.processEvent("power");
 		mi.processEvent("stop");

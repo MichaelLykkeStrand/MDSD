@@ -6,8 +6,8 @@ import examples.mini_state_machine.metamodel.Transition;
 
 public class MachineInterpreter {
 
-	private Machine machine;
-	private State currentState;
+	private Machine machine; // metamodel (i.e., state machine program) to execute
+	private State currentState; // runtime state
 	
 	public MachineInterpreter(Machine machine) {
 		this.machine = machine;
