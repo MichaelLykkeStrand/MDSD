@@ -1,0 +1,31 @@
+grammar dk.sdu.mmmi.mdsd.MiniTextGeneratorLanguage with org.eclipse.xtext.common.Terminals
+
+generate miniTextGeneratorLanguage "http://www.sdu.dk/mmmi/mdsd/MiniTextGeneratorLanguage"
+
+// generate "Hello" then "world" or "there" then repeat 7 "!" or "?"
+// generate "Hello"
+// generate "a" or "b" or "c"
+
+TextGen:
+	'generate' exp=TextExp;
+	
+TextExp returns TextExp:
+	exp1=TextOrExp ('then' {ThenExp.exp1=current} exp2=TextOrExp)*
+	;
+
+TextOrExp returns TextExp: // Precedence: 'or' is stronger than 'then'
+	exp1=TextPrim ('or' {OrExp.exp1=current} exp2=TextPrim)*
+;
+
+TextPrim returns TextExp: // Precedence: 'repeat' is strongest (together with parenthesis)
+	TextString | TextRepeat | TextParen
+;
+
+TextString:	
+	str=STRING
+;
+TextRepeat: 
+	'repeat' num=INT exp=TextPrim 
+;
+TextParen:	'(' exp=TextExp ')'	
+;
