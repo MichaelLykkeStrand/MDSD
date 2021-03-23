@@ -1,0 +1,12 @@
+decisiondiagram "Student life"
+  initial "How do you imagine your student life"
+    option "The main thing is to have the best time of my life" to DreamCareer
+    option "Student life? I am interested in the curriculum and the degree" to RelIntFlex
+  question DreamCareer "And what does the beginning of your dream career look like"
+     option "A: Nice well-paying job" to BeAStudent
+     option "B: Lowly scum living in the streets" to GiveUp
+     option "C: Make some money right now" to BeAWorker
+  goal BeAWorker "Go get a job then instead of studying"
+  goal BeAStudent "Be a student"
+  goal GiveUp "Don't be a student"
+  goal RelIntFlex "Not implemented yet"

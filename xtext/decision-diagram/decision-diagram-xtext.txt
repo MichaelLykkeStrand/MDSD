@@ -1,0 +1,35 @@
+grammar dk.sdu.mmmi.mdsd.DecisionDiagramLanguage with org.eclipse.xtext.common.Terminals
+
+generate decisionDiagramLanguage "http://www.sdu.dk/mmmi/mdsd/DecisionDiagramLanguage"
+
+DecisionDiagram:
+	'decisiondiagram' title=STRING targets+=Target*
+	;
+
+Target:
+	Initial | NamedTarget
+;
+
+NamedTarget:
+	Question | Goal
+;
+
+Initial:
+	'initial' title=STRING options+=Option* // => List<Option> options; (into which the parser may put many Option objects)
+//	'initial' title=STRING options=Option*     => Option options;       (into which the parser may put one Option object, if there are many, it will take the last)
+//	'initial' title=STRING options+=Option     => List<Option> options; (into which the parser will put precisely one Option object)
+//	'initial' title=STRING options=Option      => Option options;       (into which the parser will put precisely one Option object)
+//	'initial' title=STRING options+=Option+    => List<Option> options; (into which the parser will put at least one Option object)
+;
+
+Option:
+	'option' text=STRING 'to' to=[NamedTarget]
+;
+
+Question:
+	'question' name=ID title=STRING options+=Option*
+;
+
+Goal:
+	'goal' name=ID title=STRING
+;
