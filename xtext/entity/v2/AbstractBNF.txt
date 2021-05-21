@@ -1,0 +1,22 @@
+// Quickly written abstract BNF for the entity example
+// Written using EBNF notation inspired by xtext
+// See EntityInClassExampleLanguage.xtext.txt for the xtext BNF
+EntityModel: Declaration*
+Declaration: Type | ExternalDef | Entity
+Type: 'type'ID
+ExternalDef: 'external' ID '(' Parameter (',' Parameter)* ')'
+Parameter: ID ID
+Entity:	'entity' ID (':' ID)? '{' Member* '}'
+Member:	NamedMember | Require
+NamedMember: Attribute | Relation
+Attribute: ID ':' ID
+Relation: 'relation' ID ':' '*'? ID ('inverse' ID)?
+Require: 'require' LogicExp
+LogicExp: BasicExp '||' BasicExp | BasicExp '&&' BasicExp | BasicExp
+BasicExp: ExternalUse | Comparison
+ExternalUse: ID '(' ID (',' ID* ')'
+Comparison: Exp RelationalOp Exp
+RelationalOp: '=' | '<' | '>' | '<=' | '>='
+Exp: Exp '+' Exp | Exp '-' Exp | Exp '*' Exp | Exp '/' Exp | ID | INT | '(' Exp ')' | Sum | SizeOf
+Sum: 'sum' ID '.' ID
+SizeOf:	'sizeof' ID
